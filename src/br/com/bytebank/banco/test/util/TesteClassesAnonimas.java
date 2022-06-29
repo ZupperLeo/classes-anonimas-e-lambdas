@@ -9,7 +9,7 @@ import br.com.bytebank.banco.modelo.Conta;
 import br.com.bytebank.banco.modelo.ContaCorrente;
 import br.com.bytebank.banco.modelo.ContaPoupanca;
 
-public class Teste {
+public class TesteClassesAnonimas {
 
 	public static void main(String[] args) {
 
@@ -46,29 +46,40 @@ public class Teste {
 		for (Conta conta : lista) {
 			System.out.println(conta);
 		}
-
+		
 		System.out.println("---------------------------------");
 
-		//Lambda Implicita
-		lista.sort( (c1, c2) -> Integer.compare(c1.getNumero(), c2.getNumero()));
+		lista.sort(new Comparator<Conta>() {
+
+				@Override
+				public int compare(Conta c1, Conta c2) {
+					return Integer.compare(c1.getNumero(), c2.getNumero());
+				}
+			}
+
+		);
+		
+		for (Conta conta : lista) {
+			System.out.println(conta + ", " + conta.getTitular().getNome());
+		}
+		
+		System.out.println("---------------------------------");
+		
+		Comparator<Conta> comparator = new Comparator<Conta>() {
+
+			@Override
+			public int compare(Conta c1, Conta c2) {
+				String nomeC1 = c1.getTitular().getNome();
+				String nomeC2 = c2.getTitular().getNome();
+				return nomeC1.compareTo(nomeC2);
+			}
+		};
+		
+		lista.sort(comparator);
 
 		for (Conta conta : lista) {
 			System.out.println(conta + ", " + conta.getTitular().getNome());
 		}
-
-		System.out.println("---------------------------------");
-
-		//Lambda explicita
-		Comparator<Conta> comparator = (Conta c1, Conta c2) -> {
-			String nomeC1 = c1.getTitular().getNome();
-			String nomeC2 = c2.getTitular().getNome();
-			return nomeC1.compareTo(nomeC2);
-		};
-
-		lista.sort(comparator);
-
-		lista.forEach( (conta) ->  System.out.println(conta + ", " + conta.getTitular().getNome()));		
-		
 	}
-
+		
 }
