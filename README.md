@@ -6,6 +6,8 @@ Uma classe interna anônima pode ser útil ao criar uma instância de um objeto 
 como métodos de sobrecarga de uma classe ou interface, sem ter de realmente criar uma subclasse de uma classe.<br>
 Quando uma classe não tem atributos, e implementa um unico método de uma interface, essa classe se torna elegivel 
 para se tornar uma classe anonima. <br>
+<h4>Link do commit</h4>
+https://github.com/ZupperLeo/classes-anonimas-e-lambdas/commit/38bb6f837692cb5547feb3f42a2b0e2856fea87d#diff-deccd25cc597815eaeed05c8c32e73ddd489e22f0f069ee126ba76267e0f33c2
 </p>
 
 <br><br>
